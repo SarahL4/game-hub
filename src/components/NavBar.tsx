@@ -5,7 +5,7 @@ const NavBar = () => {
 	return (
 		//Horizontal 水平线叠堆
 		<HStack>
-			<Image src={logo} boxSize='60px' />
+			<Image src={logo} boxSize='60px' mb='5px' />
 			<Text>NavBar</Text>
 		</HStack>
 	);

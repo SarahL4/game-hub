@@ -1,33 +1,18 @@
-import { useEffect, useState } from 'react';
-import apiClient from '../services/api-client';
-import { Text } from '@chakra-ui/react';
-
-interface Game {
-	id: number;
-	name: string;
-}
-
-interface FecthGamesRespons {
-	count: number;
-	results: Game[];
-}
+import { Spinner, Text } from '@chakra-ui/react';
+import useGames from '../hooks/useGames';
 
 const GameGrid = () => {
-	const [games, setGames] = useState<Game[]>([]);
-	const [error, setError] = useState('');
-
-	useEffect(() => {
-		apiClient
-			.get<FecthGamesRespons>('/gamess')
-			.then((response) => setGames(response.data.results))
-			.catch((err) => setError(err.message));
-	});
+	//A hook between gameService create('/games)->HttpService.getAll
+	//->apiClient.get<T>('/games)-apiClient axios create{baseURL+'/games'}
+	//use hook: useGames(), and return data(games,error...)
+	const { games, error, isLoading, setGames, setError } = useGames();
 
 	return (
 		<>
+			{isLoading && <Spinner />}
 			{error && <Text color='tomato'>{error}</Text>}
 			<ul>
-				{games.map((game: Game) => (
+				{games.map((game) => (
 					<li key={game.id}>{game.name}</li>
 				))}
 			</ul>

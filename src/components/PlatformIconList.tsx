@@ -10,7 +10,7 @@ import { MdPhoneIphone } from 'react-icons/md';
 import { SiNintendo } from 'react-icons/si';
 import { BsGlobe } from 'react-icons/bs';
 import { Platform } from './../services/game-service';
-import { HStack, Icon } from '@chakra-ui/react';
+import { HStack, Icon, Text } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 
 interface Props {
@@ -37,7 +37,7 @@ const PlatformIconList = ({ platforms }: Props) => {
 			{/* //marginY 卡片长并 */}
 			{platforms.map((platform) => (
 				<Icon as={iconMap[platform.slug]} key={platform.id} color='gray.500' />
-				// <Text key={platform.id}>{platform.name}</Text>
+				// <Text key={platform.id}>{platform.slug}</Text>
 			))}
 		</HStack>
 	);

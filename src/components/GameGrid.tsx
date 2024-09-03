@@ -1,7 +1,8 @@
-import { Card, SimpleGrid, Skeleton, Spinner, Text } from '@chakra-ui/react';
+import { SimpleGrid, Spinner, Text } from '@chakra-ui/react';
 import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
+import GameCardContainer from './GameCardContainer';
 
 const GameGrid = () => {
 	//A hook between gameService create('/games)->HttpService.getAll
@@ -15,7 +16,13 @@ const GameGrid = () => {
 			{error && <Text color='tomato'>{error}</Text>}
 			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={10}>
 				{isLoading &&
-					skeletons.map((Skeleton) => <GameCardSkeleton key={Skeleton} />)}
+					skeletons.map((Skeleton) => {
+						return (
+							<GameCardContainer>
+								<GameCardSkeleton key={Skeleton} />
+							</GameCardContainer>
+						);
+					})}
 				{games.map((game) => (
 					<GameCard key={game.id} game={game} />
 				))}

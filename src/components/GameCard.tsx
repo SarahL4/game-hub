@@ -19,14 +19,16 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
 	return (
-		<Card width='300px' borderRadius={10} overflow='hidden'>
+		<Card border='1px solid red'>
 			{/* <CardHeader>
 					<Heading></Heading>
 				</CardHeader> */}
 			<Image src={getCroppedImageUrl(game.background_image)} />
-			<CardBody>
-				<Heading fontSize='2xl'>{game.name}</Heading>
-				<HStack justifyContent={'space-between'}>
+			<CardBody border='2px solid pink'>
+				<Heading fontSize='2xl' border='2px solid pink'>
+					{game.name}
+				</Heading>
+				<HStack justifyContent={'space-between'} border='2px solid pink'>
 					<PlatformIconList
 						platforms={game.parent_platforms.map((p) => p.platform)}
 					/>

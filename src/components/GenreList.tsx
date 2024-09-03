@@ -12,9 +12,10 @@ import { Genre } from '../services/genre-service';
 
 interface Props {
 	onSelectGenre: (genre: Genre) => void;
+	selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 	// const { data } = useData<Genre>('/genres');
 	const { data, isLoading, error } = useGenre();
 
@@ -35,6 +36,8 @@ const GenreList = ({ onSelectGenre }: Props) => {
 						<Button
 							onClick={() => onSelectGenre(genre)}
 							fontSize='lg'
+							fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
+							colorScheme={genre.id === selectedGenre?.id ? 'green' : ''}
 							variant='link'
 						>
 							{genre.name}

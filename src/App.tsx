@@ -10,13 +10,17 @@ function App() {
 		<Grid
 			templateAreas={{ base: `"nav""main"`, lg: `"nav nav""aside main"` }}
 			border='5px solid black'
+			templateColumns={{
+				base: '1fr',
+				lg: '200px 1fr',
+			}}
 		>
 			<GridItem area='nav' border='5px solid blue'>
 				<NavBar />
 			</GridItem>
 			{/* Show only when it large screen (laptop) 1024-1440px */}
 			<Show above='lg'>
-				<GridItem area='aside' bg='gold' border='5px solid blue'>
+				<GridItem area='aside' bg='gold' border='5px solid blue' padding={5}>
 					Aside
 					<GenreList />
 				</GridItem>

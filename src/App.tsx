@@ -3,8 +3,13 @@ import './App.css';
 import NavBar from './components/NavBar';
 import GameGrid from './components/GameGrid';
 import GenreList from './components/GenreList';
+import { useState } from 'react';
+import { Genre } from './services/genre-service';
 
 function App() {
+	// aside bar 和 main的父母是app, 在这里共商大计
+	const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
 	return (
 		//base:平时时候正常小屏幕. 大屏全显
 		<Grid
@@ -22,11 +27,11 @@ function App() {
 			<Show above='lg'>
 				<GridItem area='aside' bg='gold' border='5px solid blue' padding={5}>
 					Aside
-					<GenreList />
+					<GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
 				</GridItem>
 			</Show>
 			<GridItem area='main' bg='green' border='5px solid purple'>
-				<GameGrid />
+				<GameGrid selectedGenre={selectedGenre} />
 			</GridItem>
 			<GridItem></GridItem>
 		</Grid>

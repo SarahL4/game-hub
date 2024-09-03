@@ -3,13 +3,18 @@ import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
 import useGames from '../hooks/useGames';
+import { Genre } from '../services/genre-service';
 
-const GameGrid = () => {
+interface Props {
+	selectedGenre: Genre | null;
+}
+
+const GameGrid = ({ selectedGenre }: Props) => {
 	//A hook between gameService create('/games)->HttpService.getAll
 	//->apiClient.get<T>('/games)-apiClient axios create{baseURL+'/games'}
 	//use hook: useGames(), and return data(games,error...)
 	// const { data, error, isLoading } = useData<Game>('/games');
-	const { data, isLoading } = useGames();
+	const { data, isLoading } = useGames(selectedGenre);
 	const skeletons = [1, 2, 3, 4, 5, 6];
 	return (
 		<>

@@ -1,35 +1,30 @@
-import { useEffect, useState } from 'react';
-import gameService, {
-	FecthGamesResponse,
-	Game,
-} from '../services/game-service';
-import { CanceledError } from '../services/api-client';
+import { Game } from '../services/game-service';
+import useData from './useData';
 
-const useGames = () => {
-	const [games, setGames] = useState<Game[]>([]);
-	const [error, setError] = useState('');
-	const [isLoading, setLoading] = useState(false);
+const useGames = () => useData<Game>('/games');
+// const [games, setGames] = useState<Game[]>([]);
+// const [error, setError] = useState('');
+// const [isLoading, setLoading] = useState(false);
 
-	useEffect(() => {
-		setLoading(true);
+// useEffect(() => {
+// 	setLoading(true);
 
-		const { request, cancel } = gameService.getAll<FecthGamesResponse>();
-		request
-			.then((response) => {
-				setGames(response.data.results);
-				setLoading(false);
-			})
-			.catch((err) => {
-				if (err instanceof CanceledError) return;
-				setError(err.message);
+// 	const { request, cancel } = gameService.getAll<FecthGamesResponse>();
+// 	request
+// 		.then((response) => {
+// 			setGames(response.data.results);
+// 			setLoading(false);
+// 		})
+// 		.catch((err) => {
+// 			if (err instanceof CanceledError) return;
+// 			setError(err.message);
 
-				setLoading(false);
-			});
+// 			setLoading(false);
+// 		});
 
-		return () => cancel();
-	}, []);
+// 	return () => cancel();
+// }, []);
 
-	return { games, error, isLoading, setGames, setError };
-};
+// return { games, error, isLoading, setGames, setError };
 
 export default useGames;

@@ -14,9 +14,9 @@ export interface Game {
 	metacritic: number;
 }
 
-export interface FecthGamesResponse {
+export interface FecthResponse<T> {
 	count: number;
-	results: Game[];
+	results: T[];
 }
 
-export default create('/games');
+export default create('');

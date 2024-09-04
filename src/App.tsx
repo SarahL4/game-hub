@@ -41,6 +41,7 @@ function App() {
 			</Show>
 			<GridItem area='main' bg='green' border='5px solid purple'>
 				<PlatformSelector
+					selectedPlatform={selectedPlatform}
 					onSelectPlatform={(platform) => setSelectedPlatform(platform)}
 				/>
 				<GameGrid

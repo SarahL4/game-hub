@@ -5,28 +5,25 @@ import { BsChevronDown } from 'react-icons/bs';
 
 interface Props {
 	onSelectPlatform: (platform: Platform | null) => void;
+	selectedPlatform: Platform | null;
 }
 
-const PlatformSelector = ({ onSelectPlatform }: Props) => {
+const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
 	const { data, error } = usePlatform();
 
 	if (error) return null;
 
 	return (
 		<Menu>
-			<MenuButton
-				onClick={
-					(event) => console.log(event)
-					// onSelectPlatform(JSON.parse(event.currentTarget.value))
-				}
-				as={Button}
-				rightIcon={<BsChevronDown />}
-			>
-				Platform
+			<MenuButton as={Button} rightIcon={<BsChevronDown />}>
+				{selectedPlatform?.name || 'Platforms'}
 			</MenuButton>
 			<MenuList>
 				{data.map((platform) => (
-					<MenuItem value={JSON.stringify(platform)} key={platform.id}>
+					<MenuItem
+						onClick={() => onSelectPlatform(platform)}
+						key={platform.id}
+					>
 						{platform.name}
 					</MenuItem>
 				))}

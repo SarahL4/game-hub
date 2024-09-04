@@ -8,13 +8,18 @@ import { Genre } from './services/genre-service';
 import PlatformSelector from './components/PlatformSelector';
 import { Platform } from './services/game-service';
 
+export interface GameQuery {
+	genre: Genre | null;
+	platform: Platform | null;
+}
+
 function App() {
 	// aside bar 和 main的父母是app, 在这里共商大计
-	const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-
-	const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-		null
-	);
+	// const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+	// const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+	// 	null
+	// );
+	const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
 	return (
 		//base:平时时候正常小屏幕. 大屏全显
@@ -34,19 +39,22 @@ function App() {
 				<GridItem area='aside' bg='gold' border='5px solid blue' padding={5}>
 					Aside
 					<GenreList
-						onSelectGenre={(genre) => setSelectedGenre(genre)}
-						selectedGenre={selectedGenre}
+						onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+						selectedGenre={gameQuery.genre}
 					/>
 				</GridItem>
 			</Show>
 			<GridItem area='main' bg='green' border='5px solid purple'>
 				<PlatformSelector
-					selectedPlatform={selectedPlatform}
-					onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+					selectedPlatform={gameQuery.platform}
+					onSelectPlatform={(platform) =>
+						setGameQuery({ ...gameQuery, platform })
+					}
 				/>
 				<GameGrid
-					selectedGenre={selectedGenre}
-					selectedPlatform={selectedPlatform}
+					gameQuery={gameQuery}
+					// selectedGenre={gameQuery.genre}
+					// selectedPlatform={gameQuery.platform}
 				/>
 			</GridItem>
 			<GridItem></GridItem>

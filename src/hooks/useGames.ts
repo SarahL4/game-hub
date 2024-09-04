@@ -1,20 +1,17 @@
-import { Game, Platform } from '../services/game-service';
-import { Genre } from '../services/genre-service';
+import { GameQuery } from '../App';
+import { Game } from '../services/game-service';
 import useData from './useData';
 
-const useGames = (
-	selectedGenre: Genre | null,
-	selectedPlatform: Platform | null
-) =>
+const useGames = (gameQuery: GameQuery) =>
 	useData<Game>(
 		'/games',
 		{
 			params: {
-				genres: selectedGenre?.id,
-				platforms: selectedPlatform?.id,
+				genres: gameQuery.genre?.id,
+				platforms: gameQuery.platform?.id,
 			},
 		},
-		[selectedGenre?.id, selectedPlatform?.id]
+		[gameQuery]
 	);
 // const [games, setGames] = useState<Game[]>([]);
 // const [error, setError] = useState('');

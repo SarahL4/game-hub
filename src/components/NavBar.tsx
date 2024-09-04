@@ -4,17 +4,15 @@ import ColorModeSwitch from './ColorModeSwitch';
 import SearchInput from './SearchInput';
 
 interface Props {
-	onSearchInput: (searchInput: string) => void;
+	onSearch: (searchText: string) => void;
 }
 
-const NavBar = ({ onSearchInput }: Props) => {
+const NavBar = ({ onSearch }: Props) => {
 	return (
-		//Horizontal 水平线叠堆
-		<HStack justifyContent='space-between' padding='10px'>
+		//Horizontal 水平线叠堆 justifyContent='space-between'
+		<HStack padding='10px'>
 			<Image src={logo} boxSize='60px' mb='5px' />
-			<SearchInput
-				onSearch={(searchInput: string) => onSearchInput(searchInput)}
-			/>
+			<SearchInput onSearch={onSearch} />
 			<ColorModeSwitch />
 		</HStack>
 	);

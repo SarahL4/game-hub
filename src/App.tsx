@@ -5,10 +5,16 @@ import GameGrid from './components/GameGrid';
 import GenreList from './components/GenreList';
 import { useState } from 'react';
 import { Genre } from './services/genre-service';
+import PlatformSelector from './components/PlatformSelector';
+import { Platform } from './services/game-service';
 
 function App() {
 	// aside bar 和 main的父母是app, 在这里共商大计
 	const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
+	const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+		null
+	);
 
 	return (
 		//base:平时时候正常小屏幕. 大屏全显
@@ -34,7 +40,13 @@ function App() {
 				</GridItem>
 			</Show>
 			<GridItem area='main' bg='green' border='5px solid purple'>
-				<GameGrid selectedGenre={selectedGenre} />
+				<PlatformSelector
+					onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+				/>
+				<GameGrid
+					selectedGenre={selectedGenre}
+					selectedPlatform={selectedPlatform}
+				/>
 			</GridItem>
 			<GridItem></GridItem>
 		</Grid>

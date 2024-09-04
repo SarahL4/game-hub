@@ -1,11 +1,16 @@
-import { Game } from '../services/game-service';
+import { Game, Platform } from '../services/game-service';
 import { Genre } from '../services/genre-service';
 import useData from './useData';
 
-const useGames = (selectedGenre: Genre | null) =>
-	useData<Game>('/games', { params: { genres: selectedGenre?.id } }, [
-		selectedGenre?.id,
-	]);
+const useGames = (
+	selectedGenre: Genre | null,
+	selectedPlatform: Platform | null
+) =>
+	useData<Game>(
+		'/games',
+		{ params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
+		[selectedGenre?.id, selectedPlatform?.id]
+	);
 // const [games, setGames] = useState<Game[]>([]);
 // const [error, setError] = useState('');
 // const [isLoading, setLoading] = useState(false);

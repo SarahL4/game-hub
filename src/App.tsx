@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack, Show } from '@chakra-ui/react';
+import { Box, Flex, Grid, GridItem, HStack, Show } from '@chakra-ui/react';
 import './App.css';
 import NavBar from './components/NavBar';
 import GameGrid from './components/GameGrid';
@@ -27,18 +27,18 @@ function App() {
 		//base:平时时候正常小屏幕. 大屏全显
 		<Grid
 			templateAreas={{ base: `"nav""main"`, lg: `"nav nav""aside main"` }}
-			border='5px solid black'
+			border='1px solid black'
 			templateColumns={{
 				base: '1fr',
 				lg: '200px 1fr',
 			}}
 		>
-			<GridItem area='nav' border='5px solid blue'>
+			<GridItem area='nav' border='1px solid blue'>
 				<NavBar />
 			</GridItem>
 			{/* Show only when it large screen (laptop) 1024-1440px */}
 			<Show above='lg'>
-				<GridItem area='aside' bg='gold' border='5px solid blue' padding={5}>
+				<GridItem area='aside' bg='gold' border='1px solid blue' padding={5}>
 					Aside
 					<GenreList
 						onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
@@ -46,21 +46,23 @@ function App() {
 					/>
 				</GridItem>
 			</Show>
-			<GridItem area='main' bg='green' border='5px solid purple'>
-				<HStack paddingLeft={2} spacing={5} marginBottom={5}>
-					<PlatformSelector
-						selectedPlatform={gameQuery.platform}
-						onSelectPlatform={(platform) =>
-							setGameQuery({ ...gameQuery, platform })
-						}
-					/>
+			<GridItem area='main' bg='green' border='1px solid purple'>
+				<Flex paddingLeft={3} marginBottom={5}>
+					<Box marginRight={5}>
+						<PlatformSelector
+							selectedPlatform={gameQuery.platform}
+							onSelectPlatform={(platform) =>
+								setGameQuery({ ...gameQuery, platform })
+							}
+						/>
+					</Box>
 					<SortSelector
 						sortOrder={gameQuery.sortOrder}
 						onSelectSortOrder={(sortOrder) =>
 							setGameQuery({ ...gameQuery, sortOrder })
 						}
 					/>
-				</HStack>
+				</Flex>
 				<GameGrid
 					gameQuery={gameQuery}
 					// selectedGenre={gameQuery.genre}

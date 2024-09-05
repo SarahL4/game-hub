@@ -45,7 +45,6 @@ function App() {
 			{/* Show only when it large screen (laptop) 1024-1440px */}
 			<Show above='lg'>
 				<GridItem area='aside' bg='gold' border='1px solid blue' padding={5}>
-					Aside
 					<GenreList
 						onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
 						selectedGenre={gameQuery.genre}

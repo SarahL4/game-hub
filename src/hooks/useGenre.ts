@@ -1,7 +1,9 @@
-import { Genre } from '../services/genre-service';
-import useData from './useData';
+// import { Genre } from '../services/genre-service';
+// import useData from './useData';
+import genres from '../assets/data/genres';
 
-const useGenre = () => useData<Genre>('/genres');
+const useGenre = () => ({ data: genres, isLoading: false, error: null });
+// const useGenre = () => useData<Genre>('/genres');
 // const [genres, setGenres] = useState<Genre[]>([]);
 // const [error, setError] = useState(false);
 // const [isLoading, setLoading] = useState(false);

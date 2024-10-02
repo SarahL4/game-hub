@@ -21,5 +21,6 @@ export interface Game {
 
 export interface FecthResponse<T> {
 	count: number;
+	next: string | null;
 	results: T[];
 }

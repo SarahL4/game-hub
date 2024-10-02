@@ -1,7 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
-import apiClient from '../services/api-client';
 import { FecthResponse, Game } from '../services/InterfaceServices';
+import APIClient from '../services/api-client';
+
+const apiClient = new APIClient<Game>('/games');
 
 const useGames = (gameQuery: GameQuery) =>
 	useQuery<FecthResponse<Game>, Error>({
@@ -9,17 +11,14 @@ const useGames = (gameQuery: GameQuery) =>
 		//so any the the values in this object changes, react query will refresh the game from backend
 		queryKey: ['games', gameQuery],
 		queryFn: () =>
-			apiClient
-				.get<FecthResponse<Game>>('/games', {
-					//a request configuration object for passing our query string parameters to the backend
-					params: {
-						genres: gameQuery.genre?.id,
-						parent_platforms: gameQuery.platform?.id,
-						ordering: gameQuery.sortOrder,
-						search: gameQuery.searchText,
-					},
-				})
-				.then((res) => res.data),
+			apiClient.getAll({
+				params: {
+					genres: gameQuery.genre?.id,
+					parent_platforms: gameQuery.platform?.id,
+					ordering: gameQuery.sortOrder,
+					search: gameQuery.searchText,
+				},
+			}),
 		staleTime: 1 * 10 * 1000, //10s
 	});
 

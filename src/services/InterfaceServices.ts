@@ -21,6 +21,6 @@ export interface Game {
 
 export interface FetchResponse<T> {
 	count: number;
-	next: string | null;
+	next?: string | null;
 	results: T[];
 }

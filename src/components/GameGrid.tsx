@@ -29,7 +29,7 @@ const GameGrid = ({ gameQuery }: Props) => {
 	if (error) return <Text>{error.message}</Text>;
 
 	return (
-		<>
+		<Box>
 			<SimpleGrid
 				columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
 				spacing={6}
@@ -52,11 +52,11 @@ const GameGrid = ({ gameQuery }: Props) => {
 				))}
 			</SimpleGrid>
 			{hasNextPage && (
-				<Button onClick={() => fetchNextPage()}>
+				<Button onClick={() => fetchNextPage()} marginY={5}>
 					{isFetchingNextPage ? 'Loading...' : 'Load More'}
 				</Button>
 			)}
-		</>
+		</Box>
 	);
 };
 

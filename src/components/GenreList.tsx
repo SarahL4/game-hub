@@ -10,6 +10,7 @@ import {
 import useGenre from '../hooks/useGenre';
 import getCroppedImageUrl from './../services/image-url';
 import { Genre } from '../services/genre-service';
+import useGenres from '../hooks/useGeneres';
 
 interface Props {
 	onSelectGenre: (genre: Genre) => void;
@@ -18,7 +19,7 @@ interface Props {
 
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 	// const { data } = useData<Genre>('/genres');
-	const { data, isLoading, error } = useGenre();
+	const { data, isLoading, error } = useGenres();
 
 	if (error) return null;
 
@@ -31,7 +32,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 				Genre
 			</Heading>
 			<List>
-				{data.map((genre) => (
+				{data?.results.map((genre) => (
 					<ListItem key={genre.id} paddingY='5px'>
 						<HStack>
 							<Image

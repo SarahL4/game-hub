@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
 import apiClient from '../services/api-client';
-import { FecthResponse, Game } from '../services/game-service';
+import { FecthResponse, Game } from '../services/InterfaceServices';
 
 const useGames = (gameQuery: GameQuery) =>
 	useQuery<FecthResponse<Game>, Error>({

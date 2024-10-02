@@ -1,4 +1,8 @@
-import create from './http-service';
+export interface Genre {
+	id: number;
+	name: string;
+	image_background: string;
+}
 
 export interface Platform {
 	id: number;
@@ -19,5 +23,3 @@ export interface FecthResponse<T> {
 	count: number;
 	results: T[];
 }
-
-export default create('');

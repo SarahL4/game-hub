@@ -4,7 +4,7 @@ import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
 import useGames from '../hooks/useGames';
 import { GameQuery } from '../App';
-import { Game } from '../services/game-service';
+import { Game } from '../services/InterfaceServices';
 
 interface Props {
 	gameQuery: GameQuery;

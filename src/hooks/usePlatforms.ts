@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import apiClient from '../services/api-client';
-import { FecthResponse, Platform } from '../services/game-service';
 import platforms from '../assets/data/platforms';
+import apiClient from '../services/api-client';
+import { FecthResponse, Platform } from '../services/InterfaceServices';
 
 const usePlatforms = () =>
 	useQuery({

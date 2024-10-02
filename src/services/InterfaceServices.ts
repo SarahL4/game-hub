@@ -19,7 +19,7 @@ export interface Game {
 	rating_top: number; // a whole number 12345->emoji
 }
 
-export interface FecthResponse<T> {
+export interface FetchResponse<T> {
 	count: number;
 	next: string | null;
 	results: T[];

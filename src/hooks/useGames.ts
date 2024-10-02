@@ -1,25 +1,29 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
-import { FecthResponse, Game } from '../services/InterfaceServices';
+import { FetchResponse, Game } from '../services/InterfaceServices';
 import APIClient from '../services/api-client';
 
 const apiClient = new APIClient<Game>('/games');
 
 const useGames = (gameQuery: GameQuery) =>
-	useQuery<FecthResponse<Game>, Error>({
-		//gameQuery: the query object that reveive in this hook
-		//so any the the values in this object changes, react query will refresh the game from backend
+	useInfiniteQuery<FetchResponse<Game>, Error>({
 		queryKey: ['games', gameQuery],
-		queryFn: () =>
+		queryFn: ({ pageParam = 1 }) =>
 			apiClient.getAll({
 				params: {
 					genres: gameQuery.genre?.id,
 					parent_platforms: gameQuery.platform?.id,
 					ordering: gameQuery.sortOrder,
 					search: gameQuery.searchText,
+					page: pageParam,
 				},
 			}),
+		getNextPageParam: (lastPage, allPages) => {
+			return lastPage.next ? allPages.length + 1 : undefined;
+		},
 		staleTime: 1 * 10 * 1000, //10s
+		initialPageParam: 1,
+		// keepPreviousData: true,
 	});
 
 // const useGames = (gameQuery: GameQuery) =>

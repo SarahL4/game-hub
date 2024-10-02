@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { FecthResponse } from './InterfaceServices';
+import { FetchResponse } from './InterfaceServices';
 
 const axiosInstance = axios.create({
 	baseURL: 'https://api.rawg.io/api',
@@ -17,7 +17,7 @@ class APIClient<T> {
 
 	getAll = (config: AxiosRequestConfig) => {
 		return axiosInstance
-			.get<FecthResponse<T>>(this.endpoint, config)
+			.get<FetchResponse<T>>(this.endpoint, config)
 			.then((res) => res.data);
 	};
 }

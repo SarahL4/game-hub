@@ -13,10 +13,10 @@ import useGenres from '../hooks/useGenres';
 
 interface Props {
 	onSelectGenre: (genre: Genre) => void;
-	selectedGenre: Genre | null;
+	selectedGenreId?: number;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
 	// const { data } = useData<Genre>('/genres');
 	const { data, isLoading, error } = useGenres();
 
@@ -45,8 +45,8 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 								textAlign='left'
 								onClick={() => onSelectGenre(genre)}
 								fontSize='lg'
-								fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
-								colorScheme={genre.id === selectedGenre?.id ? 'green' : ''}
+								fontWeight={genre.id === selectedGenreId ? 'bold' : 'normal'}
+								colorScheme={genre.id === selectedGenreId ? 'green' : ''}
 								variant='link'
 							>
 								{genre.name}

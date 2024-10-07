@@ -28,6 +28,7 @@ const GameGrid = () => {
 		fetchNextPage,
 		hasNextPage,
 	} = useGames(); //(gameQuery)
+
 	const skeletons = [1, 2, 3, 4, 5, 6];
 
 	if (error) return <Text>{error.message}</Text>;
@@ -69,6 +70,7 @@ const GameGrid = () => {
 								<GameCardSkeleton />
 							</GameCardContainer>
 						))}
+
 					{data?.pages.map((page, index) => (
 						<React.Fragment key={index}>
 							{page.results.map((game: Game) => (

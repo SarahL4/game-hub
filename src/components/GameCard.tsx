@@ -12,31 +12,30 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
 	return (
-		<Link to={`/games/${game.id}`}>
-			<Card border='1px solid red'>
-				{/* <CardHeader>
+		<Card border='1px solid red'>
+			{/* <CardHeader>
 					<Heading></Heading>
 				</CardHeader> */}
-				<Image src={getCroppedImageUrl(game.background_image)} />
-				<CardBody border='2px solid pink'>
-					<HStack
-						justifyContent={'space-between'}
-						border='1px solid pink'
-						marginBottom={3}
-					>
-						<PlatformIconList
-							platforms={game.parent_platforms.map((p) => p.platform)}
-						/>
-						<CriticScore score={game.metacritic} />
-					</HStack>
-					<Heading fontSize='2xl' border='1px solid pink' textAlign='left'>
-						{game.name}
-						<Emoji rating={game.rating_top} />
-					</Heading>
-				</CardBody>
-				{/* <CardFooter></CardFooter> */}
-			</Card>
-		</Link>
+			<Image src={getCroppedImageUrl(game.background_image)} />
+			<CardBody border='2px solid pink'>
+				<HStack
+					justifyContent={'space-between'}
+					border='1px solid pink'
+					marginBottom={3}
+				>
+					<PlatformIconList
+						platforms={game.parent_platforms.map((p) => p.platform)}
+					/>
+					<CriticScore score={game.metacritic} />
+				</HStack>
+				<Heading fontSize='2xl' border='1px solid pink' textAlign='left'>
+					<Link to={'/games/' + game.slug}>{game.name}</Link>
+					{/* <Link to={`/games/${game.slug}`}>{game.name}</Link> */}
+					<Emoji rating={game.rating_top} />
+				</Heading>
+			</CardBody>
+			{/* <CardFooter></CardFooter> */}
+		</Card>
 	);
 };
 

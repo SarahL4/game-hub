@@ -19,6 +19,13 @@ export interface Game {
 	rating_top: number; // a whole number 12345->emoji
 }
 
+export interface GameQuery {
+	genreId?: number;
+	platformId?: number;
+	sortOrder?: string;
+	searchText?: string;
+}
+
 export interface FetchResponse<T> {
 	count: number;
 	next?: string | null;

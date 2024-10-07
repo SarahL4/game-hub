@@ -1,6 +1,5 @@
 // import { Platform } from '../services/game-service';
 // import useData from './useData';
-import platforms from '../data/platforms';
 import usePlatforms from './usePlatforms';
 
 const usePlatform = (id?: number) => {

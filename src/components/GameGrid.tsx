@@ -6,6 +6,7 @@ import { Game } from '../services/InterfaceServices';
 import GameCard from './GameCard';
 import GameCardContainer from './GameCardContainer';
 import GameCardSkeleton from './GameCardSkeleton';
+import { Link } from 'react-router-dom';
 
 //compendate by useGameQueryStore
 // interface Props {

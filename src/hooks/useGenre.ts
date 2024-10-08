@@ -1,10 +1,11 @@
 // import { Genre } from '../services/genre-service';
 // import useData from './useData';
+import Genre from '../entities/Genre';
 import useGenres from './useGenres';
 
 const useGenre = (id?: number) => {
 	const { data: genres } = useGenres();
-	return genres?.results.find((g) => g.id === id);
+	return genres?.results.find((g: Genre) => g.id === id);
 };
 // const useGenre = () => ({ data: genres, isLoading: false, error: null });
 // const useGenre = () => useData<Genre>('/genres');

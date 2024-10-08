@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fa'; //https://react-icons.github.io/react-icons/search/#q=faplaystation
 import { MdPhoneIphone } from 'react-icons/md';
 import { SiNintendo } from 'react-icons/si';
-import { Platform } from './../services/InterfaceServices';
+import { Platform } from '../services/entities';
 
 interface Props {
 	platforms: Platform[];

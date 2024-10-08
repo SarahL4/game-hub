@@ -2,13 +2,14 @@ import { Heading, Spinner } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import ExpandableText from '../components/ExpandableText';
 import GameAttributes from '../components/GameAttributes';
+import GameTrailer from '../components/GameTrailer';
 import useGame from '../hooks/useGame';
 
 const GameDetailPage = () => {
 	const { slug } = useParams();
 	console.log(slug);
 	const { data: game, isLoading, error } = useGame(slug!); //(slug ||'') slug!=will never be null
-
+	console.log(game?.id);
 	if (isLoading) return <Spinner />;
 	if (error || !game) throw error;
 	return (
@@ -18,6 +19,7 @@ const GameDetailPage = () => {
 
 			{/* dl-definition list element */}
 			<GameAttributes game={game} />
+			<GameTrailer gameId={game.id} />
 		</>
 	);
 };

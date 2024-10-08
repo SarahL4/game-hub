@@ -35,6 +35,13 @@ export interface GameQuery {
 	searchText?: string;
 }
 
+export interface Trailer {
+	id: number;
+	name: string;
+	preview: string;
+	data: { 480: string; max: string };
+}
+
 export interface FetchResponse<T> {
 	count: number;
 	next?: string | null;

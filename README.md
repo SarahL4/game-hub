@@ -1,5 +1,15 @@
 #Note
-##Time Calculation:ms
+
+## Games Api
+
+https://api.rawg.io/docs/#operation/games_list
+
+## React 18-Intermediate tutorial
+
+https://members.codewithmosh.com/courses/ultimate-react-part2-1/lectures/46679342
+
+## Time Calculation:ms
+
 staleTime:ms('24'),
 
 > npm i -D @types/ms //only for development use.

@@ -42,6 +42,13 @@ export interface Trailer {
 	data: { 480: string; max: string };
 }
 
+export interface Screenshoot {
+	id: number;
+	image: string;
+	width: number;
+	heigt: number;
+}
+
 export interface FetchResponse<T> {
 	count: number;
 	next?: string | null;

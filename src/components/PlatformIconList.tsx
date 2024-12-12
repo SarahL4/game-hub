@@ -33,7 +33,7 @@ const PlatformIconList = ({ platforms }: Props) => {
 		web: BsGlobe,
 	};
 	return (
-		<HStack marginY={1} border='2px solid lightGreen'>
+		<HStack marginY={1}>
 			{/* //marginY 卡片长并 */}
 			{platforms.map((platform) => (
 				<Icon as={iconMap[platform.slug]} key={platform.id} color='gray.500' />

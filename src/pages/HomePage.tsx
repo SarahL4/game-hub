@@ -10,7 +10,6 @@ const HomePage = () => {
 		<Grid
 			// templateAreas={{ base: `"nav""main"`, lg: `"nav nav""aside main"` }}
 			templateAreas={{ base: `"main"`, lg: `"aside main"` }}
-			border='1px solid black'
 			templateColumns={{
 				base: '1fr',
 				lg: '200px 1fr',
@@ -23,14 +22,14 @@ const HomePage = () => {
 			</GridItem> */}
 			{/* Show only when it large screen (laptop) 1024-1440px */}
 			<Show above='lg'>
-				<GridItem area='aside' bg='gold' border='1px solid blue' padding={5}>
+				<GridItem area='aside' padding={5}>
 					<GenreList
 					// onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id })}
 					// selectedGenreId={gameQuery.genreId}
 					/>
 				</GridItem>
 			</Show>
-			<GridItem area='main' bg='green' border='1px solid purple'>
+			<GridItem area='main'>
 				<Box paddingLeft={2}>
 					<Flex>
 						<GameHeading />
